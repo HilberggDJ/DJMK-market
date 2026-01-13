@@ -1,0 +1,59 @@
+{
+  "products": [
+    {
+      "Id": 1,
+      "Name": "Пельмени klasyczne",
+      "Qty": 49
+    },
+    {
+      "Id": 2,
+      "Name": "Пельмени z kurczakiem",
+      "Qty": 40
+    },
+    {
+      "Id": 3,
+      "Name": "Пельмени z grzybami",
+      "Qty": 29
+    },
+    {
+      "Id": 4,
+      "Name": "Пельмени z indykiem",
+      "Qty": 20
+    },
+    {
+      "Id": 5,
+      "Name": "Пельмени z dziczą",
+      "Qty": 15
+    },
+    {
+      "Id": 6,
+      "Name": "Пельмени z losiem",
+      "Qty": 24
+    },
+    {
+      "Id": 7,
+      "Name": "Пельмени z lososiem",
+      "Qty": 10
+    }
+  ],
+  "orders": [
+    {
+      "id": "e26c71ed-8231-4d5f-9976-e6ccec76b27e",
+      "date": "2026-01-13T08:36:56.239Z",
+      "products": [
+        {
+          "id": 1,
+          "qty": 1
+        },
+        {
+          "id": 3,
+          "qty": 1
+        },
+        {
+          "id": 6,
+          "qty": 1
+        }
+      ]
+    }
+  ]
+}

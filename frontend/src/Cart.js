@@ -30,38 +30,40 @@ function Cart({ cart, setCart }) {
 
   const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-  const handleOrder = (e) => {
-    e.preventDefault();
-    
-    if (cart.length === 0) {
-      alert('Koszyk jest pusty!');
-      return;
-    }
+const handleOrder = (e) => {
+  e.preventDefault();
 
-    const order = {
-      customerName: name,
-      customerAddress: address,
-      customerPhone: phone,
-      items: cart,
-      total: totalPrice
-    };
+  if (cart.length === 0) {
+    alert('Koszyk jest pusty!');
+    return;
+  }
 
-    // Wyślij zamówienie do backendu
-    fetch('http://localhost:5000/api/order', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(order)
-    })
+  const productsForApi = cart.map(item => ({
+    Id: item.id,
+    Qty: item.quantity
+  }));
+
+  fetch('http://localhost:5000/orders', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(productsForApi)
+  })
     .then(res => res.json())
     .then(data => {
-      alert('Zamówienie złożone! Numer: ' + data.orderId);
-      setCart([]);
-      setName('');
-      setAddress('');
-      setPhone('');
+      if (data === 'OK') {
+        alert('Zamówienie złożone!');
+        setCart([]);
+        setName('');
+        setAddress('');
+        setPhone('');
+      } else {
+        alert('Błąd przy składaniu zamówienia');
+      }
     })
     .catch(err => console.error('Błąd:', err));
-  };
+};
+
+
 
   return (
     <div className="cart-page">
